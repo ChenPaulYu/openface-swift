@@ -13,6 +13,7 @@
 
 +(double)getdistance;
 +(bool *)getdirection;
++(bool)resetCapture;
 
 
 @end

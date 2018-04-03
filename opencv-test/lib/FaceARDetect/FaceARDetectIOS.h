@@ -34,8 +34,8 @@
 -(std::vector<double>) run_FaceAR:(cv::Mat)captured_image frame__:(int)frame_count fx__:(double)fx fy__:(double)fy cx__:(double)cx cy__:(double)cy;
 
 
-//bool reset_FaceAR();
--(BOOL) reset_FaceAR;
+bool reset_FaceAR();
+//-(BOOL) reset_FaceAR;
 
 //bool clear_FaceAR();
 -(BOOL) clear_FaceAR;

@@ -17,10 +17,13 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     var previewImage = UIImage()
     var frame_count = 0;
     
+    
+    @IBAction func reset(_ sender: Any) {
+        reset();
+    }
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
         startLiveVideo()
+        super.viewDidLoad()
         _ = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(self.setPreviewImage), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -67,9 +70,9 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         
         /* ImageConverter => objective-c與swift的接口物件，裡面定義了多個functuon 詳細如下
         
-         (UIImage)getBinaryImage(UIImage) => 輸入未經處理的照片，回傳加上追蹤點的照片
+         (UIImage)getBinaryImage(UIImage) => 輸入未經處理的照片，回傳原圖回來（只是用來測試opencv）
          
-         (UIImage)processImage(UIImage) => 輸入未經處理的照片，回傳原圖回來（只是用來測試opencv）
+         (UIImage)processImage(UIImage) => 輸入未經處理的照片，回傳加上追蹤點的照片
          
          (double)getdistance(void) => 取得眼睛與螢幕的距離，回傳值回一double小數（值在200-350時有較好的效果）
          
@@ -91,17 +94,21 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         let movementArray = Array(UnsafeBufferPointer(start: ImageConverter.getdirection(), count: 5)) // 把指標位置轉成array
         let distance = ImageConverter.getdistance()
         
-        print(distance)
+//        print(distance)
         
-        if(movementArray[0] == true){
-            print("左");
-            
-        }
-        
-        if(movementArray[1] == true){
-            print("右");
-        }
-        
+//        if(movementArray[0] == true){
+//            print("左");
+//
+//        }
+//
+//        if(movementArray[1] == true){
+//            print("右");
+//        }
+//
+//        if(movementArray[2] == true){
+//            print("上");
+//        }
+//
         
         // movementArray[0] => 左 (true)
         // movementArray[1] => 右 (true)
@@ -112,6 +119,12 @@ class ViewController: UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         
         
     }
+    
+    @objc func reset(){
+        ImageConverter.resetCapture();
+    }
+    
+    
     
 
 

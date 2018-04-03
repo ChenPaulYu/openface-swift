@@ -24,6 +24,18 @@ double x_left_center = 0;
 
 double y_center = 0;
 
+double y_left_eyebrow = 0;
+double y_left_eyebrow_temp = 0;
+
+double y_left_eyeclose = 0;
+double y_left_eyeclose_temp = 0;
+
+double y_right_eyebrow = 0;
+double y_right_eyebrow_temp = 0;
+
+double y_right_eyeclose = 0;
+double y_right_eyeclose_temp = 0;
+
 LandmarkDetector::FaceModelParameters det_parameters;
 // The modules that are being used for tracking
 LandmarkDetector::CLNF clnf_model;
@@ -90,6 +102,17 @@ std::vector<double> visualise_tracking(cv::Mat& captured_image, cv::Mat_<float>&
         x_left_center_ref = *(face_model.hierarchical_models[1].detected_landmarks[8]) + *(face_model.hierarchical_models[1].detected_landmarks[14]);
         x_right_center_ref = *(face_model.hierarchical_models[2].detected_landmarks[8]) + *(face_model.hierarchical_models[2].detected_landmarks[14]);
         y_center_ref = *(face_model.hierarchical_models[2].detected_landmarks[39]) + *(face_model.hierarchical_models[2].detected_landmarks[45]);
+        
+        y_left_eyebrow = *(face_model.detected_landmarks[27+68]) - *(face_model.detected_landmarks[21+68]);
+        y_left_eyeclose = *(face_model.detected_landmarks[41+68]) - *(face_model.detected_landmarks[37+68]);
+        
+        
+        y_right_eyebrow = *(face_model.detected_landmarks[27+68]) - *(face_model.detected_landmarks[22+68]);
+        y_right_eyeclose = *(face_model.detected_landmarks[47+68]) - *(face_model.detected_landmarks[43+68]);
+        
+        
+        
+        
 //
 //        
         if( x_left_center_ref - x_left_center  > 5 ){
@@ -106,9 +129,19 @@ std::vector<double> visualise_tracking(cv::Mat& captured_image, cv::Mat_<float>&
             movement.at(2) = 1;
         }
         
-//        if( y_center_ref - y_center > 5 ){
-//            std::cout << "下" << std::endl;
-//        }
+        if( (y_left_eyeclose_temp - y_left_eyeclose > 5) && ( y_left_eyebrow_temp - y_left_eyebrow > 5) ){
+            movement.at(3) = 1;
+        }
+        
+        if( (y_right_eyeclose_temp - y_right_eyeclose > 5) && ( y_right_eyebrow_temp - y_right_eyebrow > 5) ){
+            movement.at(4) = 1;
+        }
+        
+        y_left_eyebrow_temp  = y_left_eyebrow ;
+        y_left_eyeclose_temp = y_left_eyeclose;
+        
+        y_right_eyebrow_temp = y_right_eyebrow ;
+        y_right_eyeclose_temp = y_right_eyeclose;
         
 //
         
@@ -198,6 +231,7 @@ std::vector<double> visualise_tracking(cv::Mat& captured_image, cv::Mat_<float>&
 //    GazeEstimate::
     
 }
+
 
 
 

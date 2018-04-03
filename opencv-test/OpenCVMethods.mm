@@ -89,6 +89,10 @@ bool moveArray[5];
     return moveArray;
 }
 
++(bool)resetCapture{
+    return [[FaceARDetectIOS alloc] clear_FaceAR];
+}
+
 @end
 
 

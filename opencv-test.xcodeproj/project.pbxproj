@@ -35,7 +35,7 @@
 		CB475709206373FA00827AF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB475708206373FA00827AF8 /* CoreVideo.framework */; };
 		CB47571220638C7300827AF8 /* lib in Resources */ = {isa = PBXBuildFile; fileRef = CB47571120638C7200827AF8 /* lib */; };
 		CB4757142063944200827AF8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4757132063944200827AF8 /* CoreData.framework */; };
-		CBD370FF206A7485009334BE /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBD370FE206A7485009334BE /* opencv2.framework */; };
+		CBD37100206AB58A009334BE /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBD370FE206A7485009334BE /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBD370FF206A7485009334BE /* opencv2.framework in Frameworks */,
+				CBD37100206AB58A009334BE /* opencv2.framework in Frameworks */,
 				CB4757142063944200827AF8 /* CoreData.framework in Frameworks */,
 				CB475709206373FA00827AF8 /* CoreVideo.framework in Frameworks */,
 				CB475707206373F000827AF8 /* CoreMedia.framework in Frameworks */,
